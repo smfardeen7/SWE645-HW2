@@ -1,0 +1,22 @@
+# Built artifacts
+*.war
+*.class
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jenkins / local
+*.log
