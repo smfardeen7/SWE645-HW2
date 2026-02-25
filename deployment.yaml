@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: student-survey
-        image: smfardeen7/swe645-hw2:latest
+        image: mfardeenshaik/swe645-hw2:latest
         ports:
         - containerPort: 8080
