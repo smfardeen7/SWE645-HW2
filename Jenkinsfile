@@ -13,6 +13,13 @@ pipeline {
             }
         }
 
+        stage('Build WAR') {
+            steps {
+                sh 'rm -f StudentSurvey.war'
+                sh 'jar -cvf StudentSurvey.war -C WebContent/ .'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $DOCKER_IMAGE .'
@@ -21,7 +28,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', 
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
                 usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh 'echo $PASSWORD | docker login -u $USERNAME --password-stdin'
                     sh 'docker push $DOCKER_IMAGE'
